@@ -1,0 +1,340 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap");
+
+body {
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+  background: linear-gradient(135deg, #0a0d1a, #121729);
+  height: 100vh;
+  color: #f0f4f8;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Container */
+.dashboard-container {
+  width: 90%;
+  height: 90vh;
+  padding: 30px;
+  border-radius: 15px;
+  background: #1a1f35;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.4);
+  display: flex;
+  flex-direction: column;
+}
+
+/* Header */
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.dashboard-header h1 {
+    font-weight: 700;
+    background: linear-gradient(90deg, #d9d9d9, #ffffff, #bfbfbf, #e6e6e6);
+    background-clip: text;              /* Standard property */
+    -webkit-background-clip: text;      /* For Chrome, Safari, Edge */
+    color: transparent;
+    text-shadow: 
+        0px 1px 2px rgba(0,0,0,0.3),
+        0px 2px 4px rgba(0,0,0,0.2),
+        0px 0px 10px rgba(255, 255, 255, 0.116);
+}
+
+/* Action Inputs */
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+}
+
+.actions input,
+.actions select {
+  padding: 10px 14px;
+  border-radius: 8px;
+  border: 1px solid #2b3250;
+  outline: none;
+  background: #13182c;
+  color: #f0f4f8;
+  font-size: 0.9rem;
+  transition: border 0.3s ease, background 0.3s ease;
+}
+
+.actions input:focus,
+.actions select:focus {
+  border-color: #00c8ff;
+  background: #1e2542;
+}
+
+/* Buttons */
+.btn {
+  background: #00c8ff;
+  border: none;
+  color: #031026;
+  padding: 10px 18px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.btn:hover {
+  background: #00aee0;
+  transform: translateY(-2px);
+}
+
+.btn.red {
+  color: #031026;
+  background: #ff4b4b;
+  font-weight: 600;
+}
+
+.btn.red:hover {
+  background: #ff3333;
+}
+
+/* Machine button */
+.machine-btn {
+  background: #4ea1ff;
+  color: #031026;
+  border: none;
+  padding: 10px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+/* Table wrapper */
+.table-wrapper {
+  flex-grow: 1;
+  overflow-y: auto;
+  border-radius: 10px;
+  border: 1px solid #2b3250;
+  background: #13182c;
+  padding: 14px;
+}
+
+/* Table */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+  background: transparent;
+}
+
+th, td {
+  padding: 12px 14px;
+  text-align: left;
+  border-bottom: 1px solid #2b3250;
+}
+
+th {
+  background: #1c2340;
+  color: #00c8ff;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  font-weight: 600;
+}
+
+tr:nth-child(even) {
+  background: #161b30;
+}
+
+tr:hover {
+  background: #1e2542;
+}
+
+/* Scrollbar */
+.table-wrapper::-webkit-scrollbar {
+  width: 8px;
+}
+
+.table-wrapper::-webkit-scrollbar-thumb {
+  background: #2b3250;
+  border-radius: 8px;
+}
+
+.table-wrapper::-webkit-scrollbar-thumb:hover {
+  background: #3a4265;
+}
+
+.pagination {
+  margin-top: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.pagination button {
+  padding: 6px 10px;
+  border: none;
+  background: #00d4ff;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.pagination button:disabled {
+  background: #444;
+  cursor: not-allowed;
+}
+
+.pagination select {
+  background: #1b1b2f;
+  color: #fff;
+  border: 1px solid #333;
+  border-radius: 6px;
+  padding: 4px 8px;
+}
+
+/* Machine list (dark theme) */
+.machine-list {
+  list-style: none;
+  padding: 0;
+  margin: 8px 0 0 0;
+  max-height: 240px;
+  overflow-y: auto;
+}
+
+.machine-list-item {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 8px 10px;
+  background: #111424;
+  color: #e6eefc;
+  margin-bottom: 6px;
+  border-radius: 6px;
+  align-items: center;
+  border: 1px solid #22283a;
+}
+
+.machine-actions button {
+  margin-left: 6px;
+  padding: 6px 8px;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+  font-weight: 600;
+}
+
+.edit-btn {
+  background: #ffc107;
+  color: #0b0b0b;
+}
+
+.delete-btn {
+  background: #dc3545;
+  color: white;
+}
+
+.save-btn {
+  background: #28a745;
+  color: white;
+  padding: 8px 12px;
+  border-radius: 6px;
+}
+
+.close-btn {
+  background: #6c6f7a;
+  color: white;
+  padding: 8px 12px;
+  border-radius: 6px;
+}
+
+/* Modal overlay */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0,0,0,0.55);
+  z-index: 9999;
+}
+
+.modal-content {
+  width: 420px;
+  background: #141826;
+  padding: 18px;
+  border-radius: 10px;
+  border: 1px solid #2a3250;
+  color: #e6eefc;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.6);
+}
+
+.modal-content h2 {
+  margin: 0 0 8px 0;
+  color: #00c8ff;
+  font-size: 1.1rem;
+}
+
+.add-row {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.add-row input {
+  flex: 1;
+  padding: 8px;
+  border-radius: 6px;
+  border: 1px solid #2b3250;
+  background: #0f1724;
+  color: #e6eefc;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 12px;
+}
+
+/* small scrollbars inside modal */
+.machine-list::-webkit-scrollbar {
+  height: 6px;
+  width: 8px;
+}
+
+.machine-list::-webkit-scrollbar-thumb {
+  background: #2b3250;
+  border-radius: 6px;
+}
+
+img{
+  height:40px; 
+  vertical-align:middle; 
+  margin-right:-20px; 
+  margin-bottom:3px;
+}
+
+.machine-text {
+  max-width: 220px;          /* ≈ 25 characters in Poppins font */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  display: inline-block;
+  cursor: pointer;
+  vertical-align: middle;
+}
+
+/* On hover - show full machine ID */
+.machine-text:hover {
+  /* white-space: normal; */
+  background: #0e1322;
+  padding: 2px 4px;
+  border-radius: 6px;
+  position: relative;
+  z-index: 999;
+  /* max-width: 400px; */
+}

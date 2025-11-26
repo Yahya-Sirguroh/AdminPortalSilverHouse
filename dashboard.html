@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SilverHouse Logs Dashboard</title>
+  <link rel="stylesheet" href="dashboard.css" />
+</head>
+<body>
+  <div class="dashboard-container">
+    <header class="dashboard-header">
+      <h1>
+  <img src="Silver Group Logo w_o BG.png" alt="SilverHouse Logo"/>
+  Silver House Logs
+</h1>
+      <div class="actions">
+        <input type="text" id="search" placeholder="🔍 Search logs..." />
+        <select id="filterUser" class="glass-select">
+          <option value="">Filter by User</option>
+        </select>
+        <select id="filterDate" class="glass-select">
+          <option value="">Filter by Date</option>
+        </select>
+        <select id="filterLocation" class="glass-select">
+          <option value="">Filter by Location</option>
+        </select>
+        <input type="month" id="filterMonth" class="glass-select" />
+        <button id="manageMachineIDBtn" class="machine-btn">Manage Machine IDs</button>
+        <button id="download" class="btn glass">Export Logs</button>
+        <button id="logout" class="btn glass red">↪️Logout</button>
+      </div>
+    </header>
+
+    <!-- Machine modal (moved out of header) -->
+    <div id="machineModal" class="modal" aria-hidden="true" role="dialog" aria-labelledby="machineTitle">
+      <div class="modal-content">
+        <h2 id="machineTitle">Machine ID Manager</h2>
+
+        <input type="text" name="search" id="machineSearch" placeholder="🔍 Search Machine ID" style="flex: 1; padding: 8px; border-radius: 6px; border: 1px solid #2b3250; background: #0f1724; color: #e6eefc; width: 95%;"/>
+
+        <div class="add-row">
+          <input type="text" id="machineInput" placeholder="Enter new Machine ID" />
+          <button id="saveMachineBtn" class="save-btn">Add</button>
+        </div>
+
+        <h3>Saved Machine IDs</h3>
+        <ul id="machineList" class="machine-list" style="text-wrap-style:balance"></ul>
+
+        <div class="modal-actions">
+          <button id="closeModal" class="close-btn">Close</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="table-wrapper">
+      <table id="logTable">
+        <thead id="tableHead"></thead>
+        <tbody id="tableBody"></tbody>
+      </table>
+      <div id="pagination" class="pagination"></div>
+    </div>
+  </div>
+
+  <script src="dashboard.js"></script>
+</body>
+</html>
