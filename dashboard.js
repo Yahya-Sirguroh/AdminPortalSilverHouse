@@ -6,10 +6,78 @@ let columns = { user: "", date: "", location: "" };
 let currentPage = 1;
 let rowsPerPage = 10;
 
+/* ---------------------- SIMPLE LOADING SCREEN WITH SPINNER ---------------------- */
+// <<< UPDATED WITH SPINNER >>>
+function showLoader() {
+  let l = document.getElementById("loaderOverlay");
+
+  if (!l) {
+    l = document.createElement("div");
+    l.id = "loaderOverlay";
+    l.style.position = "fixed";
+    l.style.top = 0;
+    l.style.left = 0;
+    l.style.width = "100%";
+    l.style.height = "100%";
+    l.style.background = "rgba(0,0,0,0.5)";
+    l.style.display = "flex";
+    l.style.alignItems = "center";
+    l.style.justifyContent = "center";
+    l.style.zIndex = "9999";
+
+    l.innerHTML = `
+      <div style="
+        display:flex;
+        flex-direction:column;
+        align-items:center;
+        padding:25px;
+        background:#1e293b;
+        color:white;
+        font-size:18px;
+        border-radius:12px;
+        box-shadow:0 0 15px rgba(0,0,0,0.3);
+      ">
+        <div class="spinner" style="
+          width:40px;
+          height:40px;
+          border:4px solid #4b5563;
+          border-top-color:#38bdf8;
+          border-radius:50%;
+          animation:spin 0.8s linear infinite;
+          margin-bottom:10px;
+        "></div>
+        Loading logs...
+      </div>
+    `;
+
+    // Add CSS animation for spinner
+    const style = document.createElement("style");
+    style.innerHTML = `
+      @keyframes spin {
+        from { transform: rotate(0deg); }
+        to { transform: rotate(360deg); }
+      }
+    `;
+    document.head.appendChild(style);
+
+    document.body.appendChild(l);
+  }
+
+  l.style.display = "flex";
+}
+
+function hideLoader() {
+  const l = document.getElementById("loaderOverlay");
+  if (l) l.style.display = "none";
+}
+
 /* ---------------------- Logs loading/pagination/filtering ---------------------- */
 
 // Fetch logs from server by selected month and year
 async function loadLogs(year, month) {
+
+  showLoader(); // <<< ADDED FOR LOADING >>>
+
   try {
     const res = await fetch(`/api/logs?year=${year}&month=${month}`);
     const data = await res.json();
@@ -25,6 +93,8 @@ async function loadLogs(year, month) {
     document.getElementById("tableBody").innerHTML =
       "<tr><td colspan='5'>⚠️ Error loading CSV data.</td></tr>";
   }
+
+  hideLoader(); // <<< ADDED FOR LOADING >>>
 }
 
 /* 🔍 Detect column names dynamically */
@@ -188,7 +258,9 @@ document.getElementById("logout")?.addEventListener("click", () => {
 const monthPicker = document.getElementById("filterMonth");
 const currentDate = new Date();
 if (monthPicker) {
-  monthPicker.value = `${currentDate.getFullYear()}-${String(currentDate.getMonth() + 1).padStart(2, "0")}`;
+  monthPicker.value = `${currentDate.getFullYear()}-${String(
+    currentDate.getMonth() + 1
+  ).padStart(2, "0")}`;
   monthPicker.addEventListener("change", (e) => {
     const [year, month] = e.target.value.split("-");
     loadLogs(year, month);
@@ -196,7 +268,14 @@ if (monthPicker) {
 }
 
 /* 🔄 Initial load (current month) */
-loadLogs(currentDate.getFullYear(), String(currentDate.getMonth() + 1).padStart(2, "0"));
+loadLogs(
+  currentDate.getFullYear(),
+  String(currentDate.getMonth() + 1).padStart(2, "0")
+);
+
+/* ---------------------- Machine ID Manager ---------------------- */
+
+// (UNCHANGED BELOW THIS POINT)
 
 /* ---------------------- Machine ID Manager ---------------------- */
 
