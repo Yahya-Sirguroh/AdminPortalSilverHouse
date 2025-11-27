@@ -217,3 +217,133 @@ footer {
   letter-spacing: 0.5px;
   text-align: center;
 }
+
+/* ===============================
+   MOBILE PIXEL PERFECT DESIGN
+   =============================== */
+
+@media (max-width: 600px) {
+
+  body {
+    background-size: cover;
+    background-position: center;
+    padding: 0 20px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    overflow-y: auto;
+  }
+
+  .login-container {
+    width: 100%;
+    max-width: 380px;
+    margin-top: 55px;
+    padding: 45px 32px;
+
+    background: rgba(20, 25, 35, 0.72);
+    backdrop-filter: blur(28px);
+    -webkit-backdrop-filter: blur(28px);
+
+    border-radius: 18px;
+    border: 1px solid rgba(255,255,255,0.08);
+
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.35);
+
+    text-align: center;
+  }
+
+  /* Logo */
+  .logo-image img {
+    width: 80px;
+    filter: drop-shadow(0 0 10px rgba(255,255,255,0.25));
+    margin-bottom: 12px;
+  }
+
+  /* Titles */
+  .logo {
+    font-size: 20px;
+    font-weight: 600;
+    color: white;
+  }
+
+  .tagline {
+    font-size: 12px;
+    font-weight: 500;
+    margin-top: 5px;
+    color: #b5b5b5;
+    margin-bottom: 26px;
+  }
+
+  /* Labels */
+  label {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    margin-bottom: 6px;
+    color: rgba(255,255,255,0.75);
+  }
+
+  /* Input fields */
+  input {
+    width: 100%;
+    padding: 14px 16px;
+    margin-bottom: 16px;
+
+    border-radius: 10px;
+    border: none;
+
+    background: rgba(0,0,0,0.25);
+    color: white;
+
+    font-size: 15px;
+
+    box-shadow: inset 0 -1.5px 0 rgba(0,0,0,0.5);
+  }
+
+  input::placeholder {
+    color: #cccccc;
+    font-size: 13px;
+  }
+
+  /* Button */
+  button {
+    width: 100%;
+    padding: 14px;
+    margin-top: 20px;
+
+    border-radius: 12px;
+    border: none;
+
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+
+    background: linear-gradient(
+      to right,
+      #cfd3db,
+      #9ca3af,
+      #6e7480
+    );
+
+    color: black;
+    box-shadow: 0 4px 12px rgba(192, 192, 192, 0.2);
+    transition: all 0.3s ease;
+  }
+
+  button:hover {
+    background: linear-gradient(
+      to right,
+      #e2e6ed,
+      #b1b7c1,
+      #7c8290
+    );
+  }
+
+  /* Footer */
+  footer {
+    font-size: 11px;
+    font-weight: 600;
+    color: #b5b5b5;
+    margin-top: 18px;
+  }
+}
